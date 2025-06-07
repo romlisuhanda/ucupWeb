@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Professional Portfolio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --color-primary: #111827;
+      --color-secondary: #6b7280;
+      --color-accent: #111827;
+      --color-bg: #ffffff;
+      --color-card-bg: #f9fafb;
+      --color-button-bg: #111827;
+      --color-button-text: #ffffff;
+      --border-radius: 0.75rem;
+      --transition-speed: 0.3s;
+      --shadow-light: rgba(0, 0, 0, 0.03);
+      --shadow-medium: rgba(0, 0, 0, 0.07);
+    }
+
+    /* Reset & base */
+    *, *::before, *::after {
+      box-sizing: border-box;
+    }
+    body {
+      margin: 0;
+      font-family: 'Inter', sans-serif;
+      background: var(--color-bg);
+      color: var(--color-primary);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      font-size: 18px;
+      scroll-behavior: smooth;
+    }
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+    /* Container */
+    .container {
+      max-width: 1200px;
+      padding: 0 24px;
+      margin: 0 auto;
+    }
+    /* Header */
+    header {
+      position: sticky;
+      top: 0;
+     /* background: var(--color-bg); */
+      box-shadow: 0 2px 6px var(--shadow-light);
+      z-index: 100;
+      backdrop-filter: saturate(180%) blur(20px);
+      -webkit-backdrop-filter: saturate(180%) blur(10px);
+    }
+    main .img img {
+        position: relative;
+        bottom: 50px;
+        border-radius: 50%;
+    }
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      height: 64px;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+    .logo {
+      font-weight: 700;
+      font-size: 1.75rem;
+      letter-spacing: -0.03em;
+      color: var(--color-primary);
+      user-select: none;
+      cursor: default;
+    }
+    .nav-links {
+      display: flex;
+      gap: 24px;
+    }
+    .nav-button {
+      font-weight: 600;
+      color: var(--color-secondary);
+      padding: 8px 16px;
+      border-radius: var(--border-radius);
+      transition:
+        color var(--transition-speed) ease,
+        background-color var(--transition-speed) ease,
+        transform var(--transition-speed) ease;
+      cursor: pointer;
+      background: transparent;
+      border: none;
+      font-size: 1rem;
+    }
+    .nav-button:hover,
+    .nav-button:focus {
+      color: var(--color-button-bg);
+      background-color: var(--color-card-bg);
+      transform: scale(1.05);
+      outline: none;
+    }
+    /* Hero Section */
+    .hero {
+      padding: 140px 24px 100px;
+      text-align: center;
+      background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
+      border-radius: var(--border-radius);
+      box-shadow: 0 8px 20px var(--shadow-medium);
+      margin: 30px auto 40px;
+      max-width: 900px;
+    }
+    .hero h1 {
+      font-weight: 800;
+      font-size: 3.75rem;
+      max-width: 720px;
+      margin: 0 auto 24px;
+      color: var(--color-primary);
+      line-height: 1.1;
+    }
+    .hero p {
+      font-weight: 400;
+      font-size: 1.4rem;
+      color: var(--color-primary);
+      max-width: 620px;
+      margin: 0 auto 40px;
+      opacity: 0.85;
+      line-height: 1.5;
+    }
+    .btn-primary {
+      background-color: var(--color-button-bg);
+      color: var(--color-button-text);
+      border: none;
+      padding: 18px 40px;
+      border-radius: var(--border-radius);
+      font-size: 1.25rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition:
+        background-color var(--transition-speed) ease,
+        transform var(--transition-speed) ease;
+      box-shadow: 0 6px 12px rgba(17,24,39,0.28);
+      user-select: none;
+    }
+    .btn-primary:hover,
+    .btn-primary:focus {
+      background-color: #22272e;
+      transform: scale(1.05);
+      outline: none;
+    }
+    /* Dashboard */
+    .dashboard {
+      max-width: 1200px;
+      margin: 0 auto 120px;
+      padding: 0 24px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 36px;
+    }
+    .card {
+      background: var(--color-card-bg);
+      border-radius: var(--border-radius);
+      box-shadow: 0 2px 14px var(--shadow-light);
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      cursor: default;
+      user-select: none;
+      overflow: hidden;
+      transition: transform var(--transition-speed) ease, box-shadow var(--transition-speed) ease;
+    }
+    .card:hover,
+    .card:focus-within {
+      transform: translateY(-8px);
+      box-shadow: 0 12px 30px var(--shadow-medium);
+      outline: none;
+    }
+    .card img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+      filter: contrast(1.05) brightness(0.95);
+      transition: filter var(--transition-speed) ease;
+    }
+    .card:hover img {
+      filter: contrast(1.1) brightness(1);
+    }
+    .card-content {
+      padding: 20px;
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .card h3 {
+      margin: 0;
+      font-weight: 700;
+      font-size: 1.5rem;
+      color: var(--color-primary);
+    }
+    .card p {
+      color: var(--color-secondary);
+      font-size: 1rem;
+      flex-grow: 1;
+      line-height: 1.4;
+    }
+    /* Skills List */
+    .skills-list {
+      max-width: 700px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      color: var(--color-secondary);
+      font-size: 1rem;
+      user-select: none;
+    }
+    .skill-item {
+      background: var(--color-card-bg);
+      padding: 10px 20px;
+      border-radius: var(--border-radius);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      box-shadow: 0 3px 8px var(--shadow-light);
+      transition: box-shadow var(--transition-speed) ease;
+      min-width: 140px;
+    }
+    .skill-item svg {
+      width: 18px;
+      height: 18px;
+      fill: var(--color-secondary);
+      flex-shrink: 0;
+    }
+    .skill-item:hover {
+      box-shadow: 0 6px 24px var(--shadow-medium);
+    }
+    /* Contact Section */
+    address {
+      color: var(--color-secondary);
+      font-style: normal;
+      max-width: 700px;
+      line-height: 1.5;
+    }
+    address strong {
+      font-weight: 600;
+      display: inline-block;
+      width: 80px;
+    }
+    address a {
+      color: var(--color-accent);
+      transition: color var(--transition-speed);
+    }
+    address a:hover,
+    address a:focus {
+      color: var(--color-button-bg);
+      outline: none;
+    }
+    /* Section Headings */
+    h2 {
+      font-weight: 700;
+      font-size: 2.25rem;
+      margin-bottom: 32px;
+      color: var(--color-primary);
+      user-select: none;
+    }
+    /* Footer */
+    footer {
+      text-align: center;
+      padding: 28px 24px;
+      font-size: 0.875rem;
+      color: var(--color-secondary);
+      user-select: none;
+      border-top: 1px solid var(--color-card-bg);
+    }
+    /* Responsive tweaks */
+    @media (max-width: 640px) {
+      .hero h1 {
+        font-size: 2.8rem;
+      }
+      .nav-links {
+        gap: 16px;
+      }
+      .dashboard {
+        grid-template-columns: 1fr;
+      }
+      .skill-item {
+        min-width: auto;
+        flex: 1 1 48%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header role="banner" aria-label="Primary navigation">
+    <nav role="navigation" aria-label="Main menu" class="container">
+      <div class="logo" tabindex="0" aria-label="Homepage">Ucup</div>
+      <div class="nav-links" role="menubar">
+        <button class="nav-button" role="menuitem" onclick="scrollToSection('about')">About</button>
+        <button class="nav-button" role="menuitem" onclick="scrollToSection('projects')">Projects</button>
+        <button class="nav-button" role="menuitem" onclick="scrollToSection('skills')">Skills</button>
+        <button class="nav-button" role="menuitem" onclick="scrollToSection('contact')">Contact</button>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero" aria-label="Introduction">
+        <span class="img">
+            <img src="https://avatars.githubusercontent.com/u/104242110?v=4" alt="foto ucup" height="300">
+        </span>
+      <h1>Ucup Moshing</h1>
+      <p>Showcasing expertise, projects, and skills through a modern, clean design tailored for professionals.</p>
+      <button class="btn-primary" onclick="scrollToSection('projects')">Browse My Work</button>
+    </section>
+
+    <section id="about" class="container" aria-label="About Me" style="padding-top: 80px; padding-bottom: 80px;">
+      <h2>About Me</h2>
+      <p style="max-width: 700px; color: var(--color-secondary); line-height: 1.5;">
+        I am a Front End with a passion for building beautiful, performant, and user-friendly web applications.
+        With a strong foundation in modern web technologies, I craft digital experiences that resonate with users and clients alike.
+      </p>
+    </section>
+
+    <section id="projects" aria-label="Projects" style="padding-top: 80px; padding-bottom: 80px;">
+      <h2 class="container">Projects</h2>
+      <div class="dashboard" role="list">
+        <article class="card" role="listitem" tabindex="0" aria-label="Portfolio Website project">
+          <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=800&q=80" alt="Screenshot of Portfolio Website project"/>
+          <div class="card-content">
+            <h3>Portfolio Website</h3>
+            <p>A sleek, responsive portfolio website using modern HTML, CSS, and JavaScript to showcase my skills and projects.</p>
+          </div>
+        </article>
+        <article class="card" role="listitem" tabindex="0" aria-label="E-commerce Platform project">
+          <img src="https://images.unsplash.com/photo-1542831371-d531d36971e6?auto=format&fit=crop&w=800&q=80" alt="Screenshot of E-commerce Platform project"/>
+          <div class="card-content">
+            <h3>E-commerce Platform</h3>
+            <p>Developed a scalable online store with modern UI, cart functionality, and payment gateway integration.</p>
+          </div>
+        </article>
+        <article class="card" role="listitem" tabindex="0" aria-label="Real-time Chat App project">
+          <img src="https://images.unsplash.com/photo-1515377905703-c4788e51af15?auto=format&fit=crop&w=800&q=80" alt="Screenshot of Real-time Chat App project"/>
+          <div class="card-content">
+            <h3>Real-time Chat App</h3>
+            <p>Built a chat application with WebSocket support for instant messaging and rich user interactions.</p>
+          </div>
+        </article>
+        <article class="card" role="listitem" tabindex="0" aria-label="Task Manager project">
+          <img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=800&q=80" alt="Screenshot of Task Manager project"/>
+          <div class="card-content">
+            <h3>Task Manager</h3>
+            <p>A productivity tool featuring task tracking, deadlines, and notifications for better time management.</p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section id="skills" class="container" aria-label="Skills" style="padding-top: 80px; padding-bottom: 80px;">
+      <h2>Skills</h2>
+      <ul class="skills-list">
+        <li class="skill-item" title="JavaScript (ES6+)">
+          <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 2L2 22h20L12 2z" /></svg> JavaScript
+        </li>
+        <li class="skill-item" title="React.js & Vue.js">
+          <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="10" stroke="none" fill="currentColor" /></svg> React & Vue
+        </li>
+        <li class="skill-item" title="CSS3 & Sass">
+          <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="4" y="4" width="16" height="16" rx="2" ry="2" stroke="none" fill="currentColor"/></svg> CSS3 & Sass
+        </li>
+        <li class="skill-item" title="Node.js & Express">
+          <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M4 4h16v16H4z" /></svg> Node.js & Express
+        </li>
+        <li class="skill-item" title="REST APIs & GraphQL">
+          <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 4h8v8h-8z" /></svg> REST & GraphQL
+        </li>
+        <li class="skill-item" title="Docker & CI/CD">
+          <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M4 12h16v8H4z" /></svg> Docker & CI/CD
+        </li>
+        <li class="skill-item" title="Git & Agile Workflow" style="">
+          <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="4" /></svg> Git & Agile
+        </li>
+      </ul>
+    </section>
+
+    <section id="contact" class="container" aria-label="Contact" style="padding-top: 80px; padding-bottom: 80px;">
+      <h2>Contact Me</h2>
+      <p style="max-width: 700px; color: var(--color-secondary); margin-bottom: 32px;">
+        Interested in working together or have a question? Feel free to reach me out through the following channels.
+      </p>
+      <address>
+        <strong>IG:</strong>
+        <a href="https://instagram.com/romlishnd" style="color: var(--color-accent);"> @romlishnd</a><br />
+        <strong>Phone:</strong> +62 85 xxxxxxx<br />
+        <strong>Github:</strong> <a href="https://github.com/romlisuhanda" target="_blank" rel="noopener">github.com/romlisuhanda</a><br />
+        <strong>FB:</strong> <a href="https://facebook.com/romlishnd" target="_blank" rel="noopener">facebook.com/romlishnd</a>
+      </address>
+    </section>
+  </main>
+
+  <footer>
+    &copy; 2025 romlisuhanda. All rights reserved.
+  </footer>
+
+  <script>
+    function scrollToSection(id) {
+      const el = document.getElementById(id);
+      if (el) {
+        el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    }
+  </script>
+</body>
+</html>
+
